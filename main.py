@@ -84,13 +84,14 @@ np_class2_samples_3 = np.array(class2_samples_3)
 df_case3 = np.vstack((np_class1_samples_3, np_class2_samples_3))
 np.random.shuffle(df_case3)
 
-perceptron = Perceptron(2, 2, 0.01)
+perceptron = Perceptron(2, 2, 0.0001)
 
 X_1 = df_case1[:, :-1]
 y_1 = df_case1[:, -1]
 
 weight, bias = perceptron.fit(X_1, y_1, 10)
-
+print('weight = ',  weight)
+print('bias = ', bias)
 
 test_case = np.array([4, -9])
 prediction = perceptron.forward(test_case)
