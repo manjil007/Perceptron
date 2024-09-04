@@ -8,7 +8,8 @@ class Perceptron:
         self.lr = lr
 
     def forward(self, X):
-        z = np.dot(X, self.weights) + self.bias
+        z = np.dot(X, self.weights)
+        z = z + self.bias
         z1 = np.where(z >= 0, 1, -1)
         return z1
 
@@ -20,6 +21,14 @@ class Perceptron:
             self.bias = self.bias + self.lr * np.sum(error)
 
         return self.weights, self.bias
+
+    def fit_gd(self, X, y, num_iterations):
+        n = len(X)
+        for i in range(num_iterations):
+            predictions = self.forward(X)
+            error = y - predictions
+            mse = (1 / n) * np.sum(error ** 2)
+            self.weights = self.weights
 
 
 
