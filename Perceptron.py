@@ -28,7 +28,10 @@ class Perceptron:
             predictions = self.forward(X)
             error = y - predictions
             mse = (1 / n) * np.sum(error ** 2)
-            self.weights = self.weights
+            self.weights = self.weights - (-2 * (np.dot(error.T, X))) / n
+            self.bias = self.bias - (-2 * np.sum(error))
+
+        return self.weights, self.bias
 
 
 
