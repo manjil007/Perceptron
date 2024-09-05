@@ -8,12 +8,24 @@ class Perceptron:
         self.lr = lr
 
     def forward(self, X):
+        """
+
+        :param X:
+        :return:
+        """
         z = np.dot(X, self.weights)
         z = z + self.bias
         z1 = np.where(z >= 0, 1, -1)
         return z1
 
     def fit(self, X, y, num_iterations):
+        """
+
+        :param X:
+        :param y:
+        :param num_iterations:
+        :return:
+        """
         for i in range(num_iterations):
             predictions = self.forward(X)
             error = y - predictions
@@ -23,6 +35,13 @@ class Perceptron:
         return self.weights, self.bias
 
     def fit_gd(self, X, y, num_iterations):
+        """
+
+        :param X:
+        :param y:
+        :param num_iterations:
+        :return:
+        """
         n = len(X)
         for i in range(num_iterations):
             predictions = self.forward(X)
